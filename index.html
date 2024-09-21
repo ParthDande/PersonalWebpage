@@ -124,25 +124,33 @@
             transform: translateY(-2px);
         }
         
-        .projects-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
+            .projects-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
+    }
+
         
         .project-section {
-            background-color: #fff;
+            height: 300px; /* Set a fixed height */
+            overflow: hidden; /* Prevent content from overflowing */
+            position: relative;
+            background-color: var(--bg-color-light);
+            color: var(--primary-color);
             padding: 2rem;
-            border-radius: 5px;
+            border: 1px solid #2c3e50;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             transition: transform 0.3s ease;
+
         }
         
         .project-section:hover {
-            transform: translateY(-5px);
+            transform: translateY(-1px);
         }
         
+
+
         .project-list {
             list-style-type: none;
             padding: 0;
@@ -167,17 +175,23 @@
             height: 2px;
             bottom: -2px;
             left: 0;
-            background-color: var(--accent-color);
             transform: scaleX(0);
             transform-origin: bottom right;
-            transition: transform 0.3s ease-out;
+            transition: transform 0.5s ease-out;
         }
 
         .project-list a:hover {
-            color: var(--accent-color);
+            color: var(--primary-color);
+            font-weight: 700;
+            transition: color 0.1s ease;
+            font-size: 1.1rem;
+  
+
         }
 
+
         .project-list a:hover::after {
+
             transform: scaleX(1);
             transform-origin: bottom left;
         }
@@ -247,12 +261,16 @@
         }
 
         #projects{
-            color: var(--heading-color);
+            
+            background-color: var(--bg-color-light);
+            color: var(--primary-color);
             border-bottom: 1px solid #2c3e50;
 
         }
+   
         #resume{
             color: var(--heading-color);
+
             border-bottom: 1px solid #2c3e50;
         }
         .contact-info a {
