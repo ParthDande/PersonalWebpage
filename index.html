@@ -1,196 +1,424 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ML Engineer Portfolio</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parth Dande - Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --bg-color-light: #ecf0f1;
+            --bg-color-dark: #f5f5f5;
+            --text-color: #333;
+            --heading-color: #2c3e50;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+        }
+        
+        header {
+            background-color: var(--primary-color);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 2rem;
+        }
+        
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 400;
+            transition: color 0.3s ease;
+        }
+        
+        nav ul li a:hover {
+            color: var(--secondary-color);
+        }
+        
+        section {
+            padding: 4rem 10%;
+            min-height: auto; /* Remove fixed height */
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start; /* Align content to the top */
+        }
+        
+        /* Add padding to the first section to account for the fixed header */
+        section:first-of-type {
+            padding-top: calc(4rem + 60px); /* Adjust based on your header height */
+        }
+        
+        h1, h2, h3 {
+            margin-bottom: 1rem;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+        }
+        
+        h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+        
+        p {
+            margin-bottom: 1rem;
+            font-weight: 300;
+            font-size: 1.1rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            font-size: 0.8rem;
+            width: 150px;
+            text-align: center;
+            font-weight: 400;
+        }
+        
+        .btn:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+        
+        .projects-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .project-section {
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .project-section:hover {
+            transform: translateY(-5px);
+        }
+        
+        .project-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        .project-list li {
+            margin-bottom: 1rem;
+        }
+        
+        .project-list a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            position: relative;
+            transition: color 0.3s ease;
+            font-weight: 400;
+        }
+
+        .project-list a::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: var(--accent-color);
+            transform: scaleX(0);
+            transform-origin: bottom right;
+            transition: transform 0.3s ease-out;
+        }
+
+        .project-list a:hover {
+            color: var(--accent-color);
+        }
+
+        .project-list a:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+        
+        footer {
+            background-color: var(--primary-color);
+            color: #fff;
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            h2 {
+                font-size: 2rem;
+            }
+            nav {
+                flex-direction: column;
+            }
+            nav ul {
+                margin-top: 1rem;
+            }
+            nav ul li {
+                margin-left: 1rem;
+                margin-right: 1rem;
+            }
+        }
+        #home{
+            padding-top: 300px;
+            padding-bottom: 300px;
+            border-bottom: 1px solid #2c3e50;
+            background-color: #000; /* Default black background for all devices */
+            color: var(--bg-color-dark);
+            position: relative;
+        }
+
+        #home::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0); /* Overlay for larger screens */
+            z-index: 1;
+            display: none; /* Hide by default */
+        }
+
+        #home > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Apply background image for screens larger than 768px (typical tablet width) */
+        @media screen and (min-width: 768px) {
+            #home {
+                background-size: cover;
+                background-position: center;
+                background-attachment: fixed;
+            }
+
+            #home::before {
+                display: block; /* Show the overlay on larger screens */
+            }
+        }
+
+        #projects{
+            color: var(--heading-color);
+            border-bottom: 1px solid #2c3e50;
+
+        }
+        #resume{
+            color: var(--heading-color);
+            border-bottom: 1px solid #2c3e50;
+        }
+        .contact-info a {
+            overflow: hidden;
+            position: relative;
+            display: inline-block;
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 700;
+            vertical-align: top;
+        }
+
+        .contact-info a::before,
+        .contact-info a::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            left: 0;
+        }
+
+        .contact-info a::before {
+            background-color: var(--accent-color);
+            height: 2px;
+            bottom: 0;
+
+            transform-origin: 100% 50%;
+            transform: scaleX(0);
+            transition: transform .3s cubic-bezier(0.76, 0, 0.24, 1);
+        }
+
+        .contact-info a::after {
+            content: attr(data-replace);
+            height: 100%;
+            top: 0;
+            transform-origin: 100% 50%;
+            transform: translate3d(200%, 0, 0);
+            transition: transform .3s cubic-bezier(0.76, 0, 0.24, 1);
+            color: var(--secondary-color);
+        }
+
+        .contact-info a:hover::before {
+            transform-origin: 0% 50%;
+            transform: scaleX(1);
+        }
+
+        .contact-info a:hover::after {
+            transform: translate3d(0, 0, 0);
+        }
+
+        .contact-info a span {
+            display: inline-block;
+            transition: transform .3s cubic-bezier(0.76, 0, 0.24, 1);
+        }
+
+        .contact-info a:hover span {
+            transform: translate3d(-200%, 0, 0);
+        }
+    </style>
 </head>
+
+
 <body>
-  <header>
-    <nav>
-      <div class="logo">
-        <a href="#">Portfolio Website</a>
-      </div>
-      <ul>
-        <li><a href="#hero">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#tech-stack">Tech Stack</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-      <div class="menu-toggle">
-        <i class="fas fa-bars"></i>
-      </div>
-    </nav>
-  </header>
+    <header>
+        <nav>
+            <div class="logo">PD</div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#resume">Resume</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-  <main>
-    <section id="hero">
-      <div class="hero-content">
+    <section id="home">
         <h1>Parth Dande</h1>
-        <p> ML Engineer</p>
-        <a href="#contact" class="button-54" onclick="smoothScroll(event)">Get in Touch</a>
-    </div>
+        <h2>Data Scientist </h2>
+        <h2>Machine Learning Engineer</h2>
+        <p>Welcome to my portfolio. I specialize in leveraging data to derive meaningful insights and creating innovative <br>machine learning solutions 
+            to solve complex problems.</p>
+        <a href="#contact" class="btn">Get in Touch</a>
     </section>
-
-    <section id="about">
-      <div class="section-header">
-        <h2>About Me</h2>
-        <div class="divider"></div>
-      </div>
-      <div class="about-content">
-        <div class="about-text">
-          <h3>My name is Parth Shrikant Dande, I am a Final Year Year AIML Engineer. I like to leverage the power of data to build solutions to modern probelms using Data Science.<br></h3>
-          <h3>Feel free to contact me so we can collaborate on Projects</h3>
-        </div>
-      </div>
-    </section>
-
+    
     <section id="projects">
-      <div class="section-header">
-        <h2>Featured Projects</h2>
-        <div class="divider"></div>
-      </div>
-      <div class="project-grid">
-        <div class="project-card">
-          <div class="project-image">
-            <img src="Images\OIP.jpeg" alt="Project 1">
-          </div>
-          <div class="project-content">
-            <h3>Satellite Terrain Classification Model</h3>
-            <p>The model can identify taken from satellite and identify the terrain</p>
-            <a href="#" class="btn button-85">Learn More</a>
-          </div>
+        <h2>My Projects</h2>
+        <div class="projects-container">    
+            <div class="project-section">
+                <h3>GitHub Projects</h3>
+                <ul class="project-list">
+                    <li><a href="https://github.com/ParthDande/Chest_X_Ray_ImageClassification" target="_blank">Pneumonia Detection Using Chest X-Ray Images</a></li>
+                    <li><a href="https://fakecheckai.onrender.com/" target="_blank">News Analysis and Fake News Detection Application</a></li>
+                    <li><a href="https://github.com/ParthDande/BooksRecommendationSystem" target="_blank">Books Recommendation System</a></li>
+                </ul>
+
+
+            </div>
+            <div class="project-section">
+                <h3>Kaggle Projects</h3>
+                <ul class="project-list">
+                    <li><a href="https://www.kaggle.com/username/notebook1" target="_blank">Hollywood Movies Data Analysis</a></li>
+                    <li><a href="https://www.kaggle.com/code/parthdande/weather-analysis" target="_blank">Historical Nashik City Weather Data Analysis</a></li>
+                    <li><a href="https://www.kaggle.com/code/parthdande/heart-disease-prediction#Confusion-Matrix" target="_blank">Heart Disease Analysis and Prediction</a></li>
+                </ul>
+            </div>
         </div>
-        <div class="project-card">
-          <div class="project-image">
-            <img src="Images\text-summarizer.png" alt="Project 2">
-          </div>
-          <div class="project-content">
-            <h3>Text Summarizer model using Transformers</h3>
-            <p>This projects uses a Transformer architecture to summarize texts 2.</p>
-            <a href="#" class="btn button-85">Learn More</a>
-          </div>
-        </div>
-        <div class="project-card">
-          <div class="project-image">
-            <img src="Images\Resume-matcher.png" alt="Project 2">
-          </div>
-          <div class="project-content">
-            <h3>Resume Matcher</h3>
-            <p>This projects uses the idea of matching similar words in the Job requiremnt and Resume to find a match</p>
-            <a href="#" class="btn button-85">Learn More</a>
-          </div>
-        </div>
-        <div class="project-card">
-          <div class="project-image">
-            <img src="Images\chest-ctscan.jpg" alt="Project 2">
-          </div>
-          <div class="project-content">
-            <h3>Pneumonia Classification</h3>
-            <p>The model can predict whether a patient has Pneumonia or not by analysing the Chest CT scan<br></p>
-            <br>
-            <a href="#" class="btn button-85">Learn More</a>
-          </div>
-        </div>
-        <div class="project-card">
-          <div class="project-image">
-            <img src="Images\stock-price-prediction.jpg" alt="Project 2">
-          </div>
-          <div class="project-content">
-            <h3>Simple Stock price Prediction Regression model</h3>
-            <p>It can predict the closing price of a stock by taking in paramenters such as open, high,low etc.</p>
-            <a href="#" class="btn button-85">Learn More</a>
-          </div>
-        </div>
-        <div class="project-card">
-          <div class="project-image">
-            <img src="Images\D_Tweets.jpg" alt="Project 2">
-          </div>
-          <div class="project-content">
-            <h3>Twitter Disaster Tweets Classification</h3>
-            <p>This NLP project segregates real Disaster Tweets from the fake ones.
-              This model is trained on the BERT model
-            </p>
-            <a href="#" class="btn button-85">Learn More</a>
-          </div>
-        </div>
-        <!-- Add more project cards as needed -->
-      </div>
     </section>
 
-    <section id="tech-stack">
-      <div class="section-header">
-        <h2>Tech Stack</h2>
-        <div class="divider"></div>
-      </div>
-      <div class="tech-stack-grid">
-        <div class="tech-card">
-          <i class="fab fa-python"></i>
-          <h3>Python</h3>
-        </div>
-        <div class="tech-card">
-          <i class="fab fa-tensorflow"></i>
-          <h3>TensorFlow</h3>
-        </div>
-        <div class="tech-card">
-          <i class="fab fa-pytorch"></i>
-          <h3>PyTorch</h3>
-        </div>
-        <div class="tech-card">
-          <i class="fas fa-chart-line"></i>
-          <h3>scikit-learn</h3>
-        </div>
-        <!-- Add more tech cards as needed -->
-      </div>
+    <section id="resume">
+        <h2>My Resume</h2>
+        <p>Download my resume to learn more about my professional experience and skills.</p>
+        <a href="https://drive.google.com/file/d/1FUEQ8QEE2Sts6Rwj5VtOLh4PKPmWTzoj/view?usp=drive_link" class="btn">Download Resume</a>
     </section>
 
     <section id="contact">
-      <div class="section-header">
-        <h2>Get in Touch</h2>
-        <div class="divider"></div>
-      </div>
-      <div class="contact-content">
-        <div class="contact-form">
-          <form>
-            <div class="form-group">
-              <label for="name">Name:</label>
-              <input type="text" id="name" name="name" required>
-            </div>
-            <div class="form-group">
-              <label for="email">Email:</label>
-              <input type="email" id="email" name="email" required>
-            </div>
-            <div class="form-group">
-              <label for="message">Message:</label>
-              <textarea id="message" name="message" required></textarea>
-            </div>
-            <button type="submit" class="button-49">Send Message</button>
-          </form>
-        </div>
+        <h2>Contact Me</h2>
+        <p>Feel free to reach out to me for collaborations or inquiries using the information below.</p>
         <div class="contact-info">
-          <h3>Contact Information</h3>
-          <p><i class="fas fa-map-marker-alt"></i>Nashik ,India</p>
-          <p><i class="fas fa-envelope"></i> parthdande05@gmail.com</p>
-          <p><i class="fas fa-phone"></i>+91 7709110377</p>
-          <div class="social-links">
-            <a href="https://www.linkedin.com/in/parth-dande-b25112242/" target="_blank"><i class="fab fa-linkedin"></i></a>
-            <a href="hub.com/ParthDande"><i class="fab fa-github"></i></a>
-            <a href="#"><i class="fab fa-kaggle"></i></a>
-          </div>
+            <p><strong>Email:</strong> <a href="mailto:parthdande15@gmail.com" data-replace="parthdande15@gmail.com"><span>parthdande15@gmail.com</span></a></p>
+            <p><strong>Phone:</strong> <a href="tel:+917709110377" data-replace="+91 7709110377"><span>+91 7709110377</span></a></p>
+            <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/parth-dande-b25112242/" target="_blank" data-replace="linkedin.com/in/parth-dande"><span>linkedin.com/in/parth-dande</span></a></p>
         </div>
-      </div>
     </section>
-  </main>
+    
+    <footer>
+        <p>&copy; 2024 Parth Dande. All rights reserved.</p>
+    </footer>
 
-  <footer>
-    <p>&copy; Parth's Portfolio</p>
-  </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
 
-  <script src="script.js"></script>
+        // GSAP animations
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Update GSAP animations to work with variable section heights
+        gsap.utils.toArray('section').forEach(section => {
+            gsap.from(section.children, {
+                opacity: 0,
+                y: 30,
+                stagger: 0.2,
+                duration: 1,
+                scrollTrigger: {
+                    trigger: section,
+                    start: 'top 80%'
+                }
+            });
+        });
+
+        // Header shrink on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.padding = '0.5rem 5%';
+            } else {
+                header.style.padding = '1rem 5%';
+            }
+        });
+    </script>
 </body>
 </html>
